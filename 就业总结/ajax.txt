@@ -1,0 +1,46 @@
+Asynchronous
+Javascript
+And
+Xml
+
+XMLHttpRequest属性
+onreadystatechange:		用于指定XMLHttpRequest对象状态改变时的事件处理函数
+readyState:				XMLHttpRequest对象的处理状态
+responseText:			用于获取服务器的响应文本
+responseXML:			用于获取服务器的响应的XML文档
+status:					服务器返回的状态码，只有服务器的响应已经完成时，才会有该状态码
+statusText:				服务器返回的状态文本信息，只有当服务器的响应已经完成时，才会有该状态文本信息
+
+onreadystatechange 和 readyState
+XMLHttpRequest对象有如下几种状态
+
+0		:XMLHttpRequest对象还没有完成初始化
+1		:XMLHttpRequest对象开始发送请求
+2		:XMLHttpRequest对象的请求发送完成
+3		:XMLHttpRequest对象开始读取服务器的响应
+4		:XMLHttpRequest对象读取服务器响应完成
+注----->
+XMLHttpRequest对象的这几个状态可以通过readyState属性读取.因此可以这样理解：每当XMLHttpRequest对象的readyState属性改变时，
+其onreadystatechange属性指定的方法都会自动触发。
+
+status 和statusText
+如果请求的资源没有HTTP Status 404 表明服务器的状态码为 404表示资源不存在-----即使资源不存在，服务器一样会生产响应。这就是说，当程序
+判断XMLHttpRequest的readyState为4，服务器响应已经完成时，从服务器获取的响应信息有可能是错误的。
+
+200			:服务器响应正常
+304			:该资源在上次请求之后没有任何修改，这通常用于浏览器的缓存机制，试用GET请求时尤其需要注意
+400			:无法找到请求的资源
+401			:访问资源的权限不够
+403			:没有权限访问资源
+404			:需要访问的资源不存在
+405			:需要访问的资源被禁止
+407			:访问的资源需要代理身份验证
+414			:请求的url太长
+500			:服务器内部错误
+
+
+AJAX  步骤:
+1.创建一个XMLHttpRequest
+2.XMLHttpRequest.open("POST/GET","url",是否设置异步);
+3.XMLHttpRequest状态改变触发了一个函数
+4.XMLHttpRequest.send();

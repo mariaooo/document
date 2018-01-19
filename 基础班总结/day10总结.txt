@@ -1,0 +1,63 @@
+1,包
+	(1)定义(掌握)
+		package 包名;
+		如果是多级包,用.隔开
+	(2)使用(掌握)
+		import 包名;
+	(3)带包类的编译和运行
+		javac -d . java文件名.java
+		java 包名.类名
+2,访问修饰符
+
+			本类		同一个包下		不同包下子类		不同包下无关类
+	private		Y	
+	
+	默认		Y		Y
+
+	protected	Y		Y			Y
+
+	public		Y		Y			Y			Y
+
+3,内部类
+
+	成员内部类
+		位置:成员位置
+		外部类名.this:代表的是外部类对象
+
+		格式:
+			外部类名.内部类名 变量名 = 外部类对象.内部类对象;
+	静态内部类
+		格式:
+			外部类名.内部类名 变量名 = 外部类名.内部类对象;
+	局部内部类
+		位置:方法中
+
+		class Demo {
+			public static void main(String[] args) {
+				Outer o = new Outer();
+				o.show();
+			}
+		}
+
+		class Outer {
+			public void show() {
+				class Inner {
+					public void method() {
+						System.out.println("method");
+					}
+				}
+
+				int a = 10;
+
+				System.out.println(a);
+
+				Inner i = new Inner();
+				i.method();
+			}
+		}
+	匿名内部类
+		格式
+			new 接口名或者类名() {
+				重写父类的方法();
+			}
+4,面向对象的复习

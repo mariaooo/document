@@ -1,0 +1,107 @@
+1,单列集合
+	(1)体系
+		Collection
+			|--List(有序,有索引,可以重复)
+				|--ArrayList
+					底层是数组结构,查询快,修改快,增删慢
+				|--LinkedList
+					底层是链表结构,查询慢,修改慢,增删快
+				|--Vector
+			|--Set(无序,没有索引,不可以重复)
+				|--HashSet
+					底层是Hash表结构
+					如何保证唯一?
+						依赖hashCode方法和equals方法
+					|--linkedHashSet
+						有序,没有索引,不可以重复
+				|--TreeSet
+					底层是二叉树结构
+					如何保证唯一?排序?
+						自然排序
+							集合中的元素必须实现Comparable,重写compareTo方法
+						比较器排序
+							在创建集合对象时传入参数,参数是比较器,实现Comparator接口,
+							重写compare方法
+	(2)Collection功能
+		add(Object o)
+		remove(Object o)
+		clear()
+		contains(Object o)
+		size()
+		isEmpty()
+		addAll(Collection c)
+		removeAll(Collection c)
+		containsAll(Collection c)
+		iterator()
+	(3)List功能
+		add(int index, Object o)
+		remove(int index)
+		get(int index)
+		indexOf(Object o)
+		set(int index, Object o)
+		listIterator()
+	(4)LinkedList功能
+		addFirst(Object o)
+		addLast(Object o)
+		getFirst()
+		getLast()
+		removeFirst()
+		removeLast()
+	(5)单列集合如何选择?
+		
+		重复?
+			是	List
+				查询多?
+					是	ArrayList
+					否	LinkedList
+				不知道查询多还是少?用ArrayList
+			否	Set
+				排序?
+					是	TreeSet
+					否	HashSet
+				不知道使用HashSet
+		什么都不知道使用ArrayList
+
+						
+2,双列集合
+	(1)体系
+		Map
+			|--HashMap(键唯一)
+				|--LinkedHashMap
+			|--TreeMap(键唯一)
+	(2)功能
+		put(K key, V value)
+		remove(Object key)
+		clear()
+		isEmpty() 
+		get(Object key)
+		keySet()
+		entrySet()
+		containsKey(Object key) 
+		containsValue(Object value) 
+		size()
+
+	(3)遍历
+		A:两种方式
+			a:通过键获取值
+				1,通过map集合获取键的集合Set keySet()	
+				2,遍历键的集合(Set集合)
+				3,通过键在map中找值get方法
+			B:通过键值对对象获取键和值
+				1,通过map获取键值对对象集合 Set entrySet()
+				2,遍历键值对对象集合,获取键和值  Entry接口中的方法getKey()和getValue()
+	(4)开发中如何选择?
+		键排序?
+			是	TreeMap
+			否	HashMap
+				有序?
+					是	LinkedHashMap
+		不知道使用谁?就使用HashMap
+3,集合功能类
+	Collections
+		sort(List list)
+		binarySearch(List list,T key)
+		reverse(List list)
+		max(Collection c)
+
+	

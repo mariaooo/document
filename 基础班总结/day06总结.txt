@@ -1,0 +1,90 @@
+1,类和对象(掌握)
+	现实生活中描述一个事物
+		属性:该事物的描述信息
+		行为:该事物能做什么
+	java中描述一个事物(因为java的基本单位是类)
+		类:
+			成员变量:属性
+			成员方法:行为
+	类:一组相关属性和行为
+	对象:具体的实现
+2,成员变量和局部变量的区别(掌握)
+	(1)在类中的位置不同
+		成员变量:在类中方法外
+		局部变量:在方法中或者方法声明上
+	(2)在内存中的位置不同
+		成员变量:在堆内存中
+		局部变量:在栈内存中
+	(3)初始化值不同
+		局部变量:没有默认初始化值,在使用之前必须对其进行赋值
+		成员变量:有默认初始化值
+	(4)生命周期不同
+		局部变量:随着方法的调用而存在,随着方法的调用完毕而消失
+		成员变量:随着对象的创建而存在,随着对象的消失而消失
+	注意事项:
+		成员变量和局部变量可以同名(因为在内存中的位置不同),在使用中采用就近原则
+		引用数据类型:数组,类,接口,枚举
+
+3,封装
+	(1)概述:隐藏实现细节,对外提供公共的访问接口
+	(2)private关键字
+		A:private是权限修饰符(public也是)
+		B:private可以修饰成员变量和成员方法(private可以修饰类的成员)
+		C:private修饰的成员只能在本类中访问
+		D:private是封装的一种体现,不能说封装就是private
+	(3)this关键字
+		A概述:当前对象的引用
+		B:区分成员变量和局部变量
+4,匿名对象
+	(1)概述:没有名字的对象
+	(2)使用场景:只是用一次时用匿名对象(开发中一般作为实际参数)
+
+
+	标准类:
+
+	/*
+		学生类:
+			成员变量:
+				姓名,年龄
+			成员方法:
+				学习,setXxx和getXxx
+
+	*/
+	class Student {
+		private String name;
+		private int age;
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public void setAge(int age) {
+			this.age = age;
+		} 
+
+		public int getAge() {
+			return this.age;
+		}
+
+		public void study() {
+			System.out.println("学习");
+		}
+	}
+
+	class Demo_Student {
+		public static void main(String[] args) {
+
+			//创建对象
+			Student s = new Student();
+			//通过对象调用方法
+			s.setName("小龙");
+			s.setAge(19);
+			System.out.println(s.getName() + "..." + s.getAge());
+			s.study();
+		}
+	}
+	

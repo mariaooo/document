@@ -1,0 +1,47 @@
+1,StringBuffer(StringBuilder)(掌握)
+	(1)构造方法
+		StringBuffer()
+		StringBuffer(int ca)
+		StringBuffer(String s)
+		StringBuilder(CharSequence seq) 
+	(2)功能
+		A:添加
+		B:删除
+		C:替换
+		D:反转
+	(3)StringBuffer和StringBuilder区别
+		StringBuffer是线程安全,效率低
+		StringBuilder是线程不安全,效率高
+	(4)String和StringBuffer的转换
+		A:String转换为StringBuffer
+			StringBuffer(String s)
+			append(String s)
+		B:StringBuffer转换为String
+			String(StringBuffer sb)
+			StringBuffer的toString方法
+			StringBuffer中的substring方法
+2,数组的高级操作(掌握)
+	(1)冒泡排序
+	(2)选择排序
+	(3)二分查找(前提:数组必须有序)
+	(4)Arrays:数组操作的工具类
+3,基本数据类型的包装类(掌握)
+	int	Integer
+	char	Character
+	boolean	Boolean
+	double	Double
+	float	Float
+	long	Long
+	byte	Byte
+	short	Short
+
+	(1)构造方法
+	(2)功能
+	(3)int和String转换
+		int ---> String
+			a:+号
+			b:String.valueOf(int i)
+		String ---> int
+			Integer.parseInt(String s);
+	(4)自动装箱和自动拆箱(JDK5后)
+

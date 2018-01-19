@@ -1,0 +1,156 @@
+1,异常
+	(1)体系:(掌握)
+		Throwable
+			|--Error
+			|--Exception
+				|--RuntimeExcetption
+				|--非RuntimeExcetption
+	(2)处理异常的两种方式(掌握)
+		A:try{} catch() {} finally{}
+		B:throws 把异常抛出
+	(3)处理异常的原则
+		javaEE分层:IO都在最底层,往上抛,直到不能抛(如果再抛就交给了jvm处理)
+	(4)自定义异常
+		class A extends Exception{} 编译时异常,必须在编译时期进行处理
+		class A extends RuntimeException {}运行时异常,编译时期可以不处理
+
+		throw new A();
+2,File类(掌握)
+	(1),构造方法
+		File(String path)//路径E:\javaSE\0801\day22\day22_resource E:\javaSE\0801\day22\day22_resource\day21作业.txt
+		File(File file, String name)
+		File(String path, String name)
+	(2),功能
+		A:创建
+			createNewFile() //创建文件
+			mkdir()//创建单层,如果day22前的路径不存在,就会报错.比如:E:\javaSE\0801\day22\day22_resource
+			mkdirs()//创建多层路径
+		B:删除
+			delete()//可以删除文件,也可以删除文件夹(此文件夹必须是空的)
+		C:判断
+			isFile()
+			isDirectory() 
+			exists() 
+		D:获取
+			getName()//获取文件名
+			length()//获取文件的大小
+			getPath()//获取路径
+			getAbsolutePath() //获取绝对路径
+			String[] list()//获取当前路径下所有的文件夹和文件名称
+			File[] listFiles()//获取当前路径下所有文件夹和文件对象
+1,字节流(掌握)
+	(1),体系:
+		InputStream
+			FileInputStream
+		OutputStream
+			FileOutputStream
+	(2),拷贝数据
+		A:每次拷贝一个字节
+			FileInputStream fis = new FileInputStream(new File(""));
+			FIleOutputStream fos = new FIleOutputStream(new File(""));
+
+			int b;
+			while((b = fis.read()) != -1) {
+				fos.write(b);
+			}
+			fis.close();
+			fos.close();
+		B:每次拷贝一个数组的字节
+			FileInputStream fis = new FileInputStream(new File(""));
+			FIleOutputStream fos = new FIleOutputStream(new File(""));
+
+			int b;
+			byte[] arr = new byte[1024 * 8];
+			while((b = fis.read(arr)) != -1) {
+				fos.write(arr, 0, b);
+			}
+			fis.close();
+			fos.close();
+		C:通过缓存区拷贝数据(开发常用)
+			BufferedInputStream bis = new BufferedInputStream(new FileInputStream(""));
+			BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(""));
+			
+			int b;
+			while((b = bis.read()) != -1) {
+				bos.write(b);
+			}
+			bis.close();
+			bos.close();
+
+
+			BufferedInputStream bis = new BufferedInputStream(new FileInputStream(""));
+			BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(""));
+			
+			int b;
+			byte[] arr = new byte[1024 * 7];
+			while((b = bis.read(arr)) != -1) {
+				bos.write(arr, 0 , b);
+			}
+			bis.close();
+			bos.close();
+3,字符流(掌握)
+	(1),体系
+		Reader
+			FileReader
+		Writer
+			FileWriter
+	(2),拷贝数据
+		A:每次拷贝一个字符
+			FileReader fr = new FileReader("");
+			FileWriter fw  = new FileWriter("");
+			int c;
+			while((c = fr.read()) != -1) {
+				fw.write(c);
+			}
+			fr.close();
+			fw.close();
+		B:每次拷贝一个数组长度的字符
+			FileReader fr = new FileReader("");
+			FileWriter fw  = new FileWriter("");
+			int len;
+			char[] arr = new char[1024 * 8];
+			while((len = fr.read(arr)) != -1) {
+				fw.write(arr,0 ,len);
+			}
+			fr.close();
+			fw.close();
+		C:通过缓存区读取数据
+			BufferedReader br = new BufferedReader(new FileReader(""));
+			BufferedWriter bw  = new BufferedWriter(new FileWriter(""));
+			int c;
+			while((c = br.read()) != -1) {
+				bw.write(c);
+			}
+			br.close();
+			bw.close();
+		
+		D:每次一行(开发常用)
+			BufferedReader br = new BufferedReader(new FileReader(""));
+			BufferedWriter bw  = new BufferedWriter(new FileWriter(""));
+			String line;
+			while((line = br.readLine()) != null) {
+				bw.write(line);
+				bw.newLine();
+			}
+			br.close();
+			bw.close();
+4,内存输出流
+5,打印流和标准输入输出流
+6,Properties类
+	(1),父类时hashtable,是一个双列集合
+	(2),功能
+		setProperty("", "");
+		String getProperty("");
+		load(InputStream is)
+		load(Reader r)
+		store(OutputStream os, String str)
+		store(Writer w, String str)
+7,递归	
+	自己调用字节
+	注意事项:
+		该方法必须有出口
+		而且这个出口有可能性
+		
+
+	
+
